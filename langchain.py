@@ -1,15 +1,15 @@
 import os
 from dotenv import load_dotenv
+from langchain_google_genai import  ChatGoogleGenerativeAI
+
 
 load_dotenv()
 
-
 def main():
-    gemini_api_key = os.getenv("GEMINI_API_KEY")
-    if not gemini_api_key:
-        raise ValueError("GEMINI_API_KEY is not set in environment variables.")
-    print(f"Gemini API Key: {gemini_api_key}")
 
+    llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash")
+    result = llm.invoke("Sing a ballad of LangChain.")
+    print(result.content)
 
 if __name__ == "__main__":
     main()
