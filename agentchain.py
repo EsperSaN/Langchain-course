@@ -29,6 +29,7 @@ agent = create_react_agent(
     tools = tools_list,
     prompt = react_prompt_with_pydantic_format
 )
+
 agent_exe = AgentExecutor(agent=agent, tools=tools_list,verbose=True, handle_parsing_errors=True) # to fix the Parser Error using the handle_parsing_error
 extrace_the_output = RunnableLambda(lambda x : x["output"])
 prase_out_put_json = RunnableLambda(lambda x : out_parser.parse(x))
